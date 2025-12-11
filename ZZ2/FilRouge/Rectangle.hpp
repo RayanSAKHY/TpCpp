@@ -7,8 +7,7 @@
 class Rectangle : public Forme
 {
 public:
-    Rectangle(int x, int y, int w, int h,COULEURS c = COULEURS::BLEU);
-    Rectangle();
+    Rectangle(int x= 0, int y =0, int w = 0, int h = 0,COULEURS c = COULEURS::BLEU);
     std::string toString() const override;
 };
 

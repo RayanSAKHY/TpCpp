@@ -12,9 +12,3 @@ Rectangle::Rectangle(int x, int y, int w, int h,COULEURS c) :
 Forme(x,y,c,w,h)
 {
 }
-
-Rectangle::Rectangle() :
-    Rectangle(0,0,0,0)
-{
-
-}
