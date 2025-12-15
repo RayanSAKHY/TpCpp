@@ -32,21 +32,25 @@ int main()
     std::cout << "Vecteur avec le plus proche voisin randomisé : ";
     afficherVecteur(sol, prob);
 
-    // patateHeuristique(sol, prob);
-    // std::cout << "Vecteur avec la patate heuristique : ";
-    // afficherVecteur(sol, prob);
+    patateHeuristique(sol, prob);
+    std::cout << "Vecteur avec la patate heuristique : ";
+    afficherVecteur(sol, prob);
 
+    std::cout <<"Excecution d'un split avec un nombre illimité de camion : ";
     if (splitVRPunlimited(prob,sol)) {
         afficherTournees(sol);
     }
+    std::cout << "Ameilloration des résultats avec la méthode GRASP : ";
     vndImprove(sol, prob);
     afficherTournees(sol);
 
-    // if (splitVRPLimited(prob,sol)){
-    //     afficherTournees(sol);
-    // }
-    // vndImprove(sol, prob);
-    // afficherTournees(sol);
+    std::cout <<"Excecution d'un split avec un nombre limité de camion : ";
+     if (splitVRPLimited(prob,sol)){
+            afficherTournees(sol);
+    }
+    std::cout << "Ameilloration des résultats avec la méthode GRASP : ";
+    vndImprove(sol, prob);
+    afficherTournees(sol);
 
     delete PTR;
     delete SLT;

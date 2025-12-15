@@ -74,7 +74,7 @@ void afficherVecteur(const t_solution & sol, const t_probleme & prob) {
 
 	for (int i = 1;i <= prob.nbClient;i++) {
 		std::cout << sol.vecteur[i] << " ";
-	}std::cout << std::endl;
+	}std::cout << "\n" << std::endl;
 }
 
 void plusProcheVoisin(const t_probleme& prob, t_solution& sol) {
