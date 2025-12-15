@@ -14,8 +14,9 @@ public:
     Pile(int * tab,int capacite);
     Pile();
     int size() const;
+    const int * getTab() const;
     int capacity() const;
-    bool empty();
+    bool empty() const;
     void push(int elt);
     void pop();
     int top() const;

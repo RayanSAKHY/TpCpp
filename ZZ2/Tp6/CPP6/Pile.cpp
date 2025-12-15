@@ -1,5 +1,4 @@
 #include "Pile.hpp"
-
 #include <cstring>
 
 Pile::Pile() : taille(0),capacite(1),tab(nullptr) {
@@ -15,13 +14,13 @@ int *Pile::allocateNewTab(int capacite) {
     }
 }
 
-Pile::Pile(int capacite): taille(0), tab(nullptr) {
-    if (capacite <= 0) {
+Pile::Pile(int capa): taille(0), tab(nullptr) {
+    if (capa <= 0) {
         throw std::invalid_argument("capacite must be greater than 0");
     }
-    if (capacite) {
-        tab = allocateNewTab(capacite);
-    }
+    capacite = capa;
+    //std::cout << "ca marche ?" << std::endl;
+    tab = allocateNewTab(capacite);
 }
 
 Pile::Pile(int * newTab,int capacite) : taille(0),capacite(capacite),tab(nullptr){
@@ -35,7 +34,10 @@ int Pile::size() const {
     return taille;
 }
 
-bool Pile::empty() {
+bool Pile::empty() const {
+    if (taille == 0) {
+        std::cout << "pile is empty" << std::endl;
+    }
     return taille == 0;
 }
 
@@ -76,7 +78,7 @@ int Pile::capacity() const {
     return capacite;
 }
 int & Pile::operator[](int index) {
-    std::cout <<"ca marche pas";
+    //std::cout <<"ca marche pas";
     int i = index;
     if (index < 0 || index >= capacite) {
         throw std::out_of_range("index out of range");
@@ -86,7 +88,12 @@ int & Pile::operator[](int index) {
 }
 
 Pile operator+(const Pile & p1,const Pile & p2) {
-    int capa =
+    int capa = p1.capacity() + p2.capacity();
+    int * newTab = new int[capa];
+    memcpy(newTab,p1.getTab(),sizeof(int)*p1.capacity());
+    memcpy(newTab+p1.capacity(),p2.getTab(),sizeof(int)*p2.capacity());
+    Pile p(newTab,capa);
+    return p;
 }
 
 void Pile::pop() {
@@ -96,6 +103,9 @@ void Pile::pop() {
     taille--;
 }
 
+const int * Pile::getTab() const {
+    return tab;
+}
 Pile::~Pile() {
     delete [] tab;
 }
