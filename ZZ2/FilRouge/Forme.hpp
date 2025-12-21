@@ -33,6 +33,7 @@ public:
     int getLargeur() const;
     void setHauteur(int hauteur);
     void setLargeur(int largeur);
+    virtual Forme * clone() const;
 };
 
 

@@ -13,6 +13,7 @@ public:
     std::string toString() const override;
     int getRayon() const;
     void setRayon(int rayon);
+    Cercle * clone() const override;
 };
 
 

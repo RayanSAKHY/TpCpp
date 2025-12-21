@@ -14,6 +14,7 @@ public:
     static int getCompteur();
     std::string toString() const override;
     void ajouter(Forme * f);
+    Groupe * clone() const override;
 };
 
 

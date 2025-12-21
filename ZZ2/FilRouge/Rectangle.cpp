@@ -12,3 +12,7 @@ Rectangle::Rectangle(int x, int y, int w, int h,COULEURS c) :
 Forme(x,y,c,w,h)
 {
 }
+
+Rectangle * Rectangle::clone() const {
+    return new Rectangle(*this);
+}

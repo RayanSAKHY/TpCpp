@@ -88,3 +88,14 @@ void Forme::setLargeur(int largeur)
 {
     w = largeur;
 }
+
+Forme * Forme::clone() const {
+    Forme * f = new Forme(*this);
+    f->couleur = couleur;
+    f->p.setX(p.getX());
+    f->p.setY(p.getY());
+    f->id = getId();
+    f->w = getLargeur();
+    f->h = getHauteur();
+    nbFormes++;
+}

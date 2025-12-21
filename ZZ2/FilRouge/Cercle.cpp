@@ -35,3 +35,7 @@ void Cercle::setRayon(int rayon)
     setHauteur(rayon*2);
     setLargeur(rayon*2);
 }
+
+Cercle * Cercle::clone() const {
+    return new Cercle(*this);
+}
