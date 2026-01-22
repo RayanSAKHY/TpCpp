@@ -15,7 +15,7 @@ public:
     std::string getNom() const;
     std::string getPrenom() const;
     double getNote() const;
-    double operator() (const ZZ& zz) const;
+    bool operator>(const ZZ& zz) const;
 };
 
 std::ostream& operator<<(std::ostream& o,const ZZ& zz);

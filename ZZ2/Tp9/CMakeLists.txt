@@ -7,4 +7,9 @@ include_directories(.)
 
 add_executable(Tp9
         ZZ.cpp
-        ZZ.hpp)
+        ZZ.hpp
+        ComparateurZZ.cpp
+        ComparateurZZ.hpp
+        main.cpp
+        rand_0_100.cpp
+        rand_0_100.hpp)

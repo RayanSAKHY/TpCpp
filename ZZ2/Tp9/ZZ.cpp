@@ -11,12 +11,13 @@ std::ostream& operator<<(std::ostream& o,const ZZ& zz) {
 
 bool ZZ::operator<(const ZZ& zz) const {
     std::string s1 = nom+prenom;
-    std::string s2 = this->getNom()+this->getPrenom();
+    std::string s2 = zz.getNom()+zz.getPrenom();
     return s1<s2;
 }
 
-double ZZ::operator()(const ZZ &zz) const {
-    return note<this->getNote();
+
+bool ZZ::operator>(const ZZ& zz) const {
+    return !operator<(zz);
 }
 
 ZZ::ZZ(std::string nom, std::string prenom, double note): nom(nom),prenom(prenom),note(note) {
