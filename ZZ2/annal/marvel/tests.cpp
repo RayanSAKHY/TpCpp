@@ -30,7 +30,7 @@ TEST_CASE("Personne3") {
     sorciere.afficher(ss);
     REQUIRE("Wanda Maximof [FEMME]" == ss.str() );
 } 
-/*
+
 TEST_CASE("Inconnu1") {
     REQUIRE("Inconnu"             == Personne::INCONNU.getNom());
     REQUIRE("Inconnu"             == Personne::INCONNU.getPrenom());
@@ -68,7 +68,7 @@ TEST_CASE("Anonyme1") {
 TEST_CASE("Anonyme2") {
     const char * msg = "identite anonyme";
     AnonymeException ie;
-    REQUIRE( strcmp(msg, ie.what() );
+    REQUIRE( strcmp(msg, ie.what() ) == 0);
 } 
 
 TEST_CASE("Anonyme3") {
@@ -87,7 +87,7 @@ TEST_CASE("Super2") {
     CHECK( "Brock"  == venom.getIdentite().getNom() );
     CHECK( "Parker" != venom.getIdentite().getNom() );
 }
-*/
+
 
 
 /*
@@ -98,13 +98,13 @@ TEST_CASE("Capacite0") {
 } 
 */
 
-/*
+
 TEST_CASE("Materiel") {
     Materiel armure("MarkI", 5);
     std::stringstream log;
     armure.actionner(log); 
     REQUIRE ( "MarkI [5] en action" == log.str()); 
-} 
+}
 
 TEST_CASE("Physique") {
     Physique force("force", 3);
@@ -217,4 +217,4 @@ TEST_CASE("Equipe") {
     REQUIRE ( 880 == vengeurs.getNiveau());
     // Il manque Thor Odinsen et Steve Rogers pour l'équipe originelle :-)
 }
-*/
+
