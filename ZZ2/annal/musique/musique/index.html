@@ -1,0 +1,153 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Examen CPP ZZ2 - 20250127</title>
+	<style>
+        body {
+        	padding-top:3em;
+        	width:90%;
+        	margin: auto;
+        }
+
+		p, h1, h2, li {
+		 font-family: "Arial";
+		 text-align : justify;
+		}
+		h2 {
+		border-bottom: .2em dotted #B0CBF4;
+}
+       .imp{
+       	   width:80%;
+     margin:0.5em auto 0.5em auto;
+     padding:0.5em 1em 0.5em 4em;    
+     border-radius:0.5em;
+     box-shadow:  0 0.5em 1em 0.2em rgba(0,0,0,0.56);
+     color : white;
+     background-color: purple
+       }
+
+       code {
+       	background-color: #f5f2f0;
+ 		border-radius:0.2em;
+       	display: inline-block;
+       	padding-left:0.25em;
+       	padding-right:0.25em;
+       	font-size:120%;
+       }
+	</style>
+</head>
+<body>
+<h1>Examen de C++ - ZZ2 - 27/01/2025</h1>
+
+
+<h2>Consignes générales</h2>
+
+<p>Voici votre examen de C++ ZZ2. Lisez tout le sujet avant de commencer : un certain nombre de tests ont été écrits pour être indépendants ou avec peu d'influence sur les autres.</p>
+
+<p class="imp">&Agrave; la fin de l'examen, vous devez transmettre le source/répertoire d'un programme qui compile. Une icône se trouve sur le bureau "Post Exam".</p>
+
+<p>Pour plus de simplicité, vous DEVEZ utiliser trois fichiers en plus de <code>main.cpp</code> : <code>tests.cpp</code>, <code>musique.hpp</code> et <code>musique.cpp</code>. Ne changez pas la casse et n'ajoutez pas de fichiers, cela casserait la chaine de compilation et engendrerait une note nulle.</p>
+
+<p>Toutes les déclarations seront dans l'entête, les définitions/implémentations seront dans le cpp. </p>
+
+<p>La ligne de compilation est la suivante :</p>
+<blockquote>
+<code>make</code>
+</blockquote>
+</p>
+
+<p>Si besoin, vous pouvez faire un <code>make clean</code>. La première compilation de la bibliothèque Catch est un peu longue, comme d'habitude</p>
+
+<p>Ne jamais recommenter un test qui a réussi. Tous les tests décommentés doivent compiler dans le même temps (sauf mention contraire).</p>
+
+<p>Pour garder une trace exécutable de votre programme sans stress supplémentaire :</p>
+<ul>
+<li>Vous pouvez utiliser GIT. Un rappel des commandes GIT est fait à la fin de l'énoncé. La correction s'interessera uniquement à la version disponible.</li>
+<li>Si vous préférez faire des copies de répertoires, cela marche également. Cependant ne vous trompez pas lors de la transmission finale !</li>
+</ul>
+
+<p style="text-align:center;font-size:2em"><a href="https://en.cppreference.com/w/" target="_blank">DOCUMENTATION CPP</a></p>
+
+<h2>Sujet</h2>
+
+<p>Vous allez <b>plus ou moins</b> implémenter le diagramme UML ci-dessous. Toute ressemblance avec un autre examen serait purement fortuite.</p>
+
+<img src="musique.svg" style="display:inline-block;max-width:80%;margin-left:20%">
+
+<p>On commence par la classe <code>Personne</code>.</p>
+<ul>
+	<li>Cette classe possède deux attributs <code>nom</code> et un <code>prenom</code>. [Personne1] [Personne2]</li>
+	<li>Implémenter la fonction <code>sePresenter()</code> qui permet d'envoyer un affichage lisible sur le flux donné en paramètre. [Personne3]</li> 
+	<li>Faire la même chose avec l'opérateur &lt;&lt;[Personne4]</li> 
+</ul>
+
+<p>Le programme utilise une exception <code>ImpossibleException</code> qu'il est nécessaire de créer [Impossible1]</p>
+
+<p>Le programme utilise une classe <code>Partition</code> à définir mais qui est une classe vide.</p>
+
+<p>On s'intéresse ensuite aux classes <code>Instrument</code>, <code>Flute</code>, <code>Piano</code> et <code>Violon</code>. (les trois dernières classes ne sont pas développées dans le cadre de cet examen)</p>
+<ul>
+	<li>La classe <code>Instrument</code> dispose d'un compteur qui est incrémenté à chaque instanciation d'un instrument [Instrument1]</li>
+	<li>Les instruments utilisent ce compteur pour créer un identifiant [Instrument1]</li> 
+	<li>Les instruments ont un nom [Instrument1]</li> 
+    <li>La classe <code>Instrument</code> est abstraite [Instrument2]</li> 
+	<li>Une partition est jouée par un instrument fonctionnel [Instrument3]</li>
+	<li>Dans le cas contraire, une exception est levée [Instrument5]</li> 
+	<li>Lorsqu'une partition est jouée, le nom de l'instrument est "'donné" [Instrument3] [Instrument4]</li>
+</ul>
+
+<p>On s'intéresse ensuite au facteur d'instrument qui est l'expert capable de créer/réviser/réparer un instrument. 
+</p>
+
+<ul>
+	<li>Le facteur est spécialisé dans un instrument donné à la construction [Facteur0]</li>
+    <li>Le facteur révise l'instrument, fonctionnel ou non [Facteur0] [Facteur1]</li>
+	<li>Le facteur ne peut réviser l'instrument qu'il ne connait pas [Facteur2]</li>
+</ul>
+
+
+<p>Un musicien joue d'un ou plusieurs instruments (on ne prend pas en compte le cas où il ne connait pas d'instrument :-)) </p>
+
+<ul>
+	<li>Un musicien, quand il se présente, énumère les types d'instruments dont il sait jouer (dans l'ordre lexicographique, sans doublon) [Musicien0][Musicien1][Musicien2]</li>
+	<li>On vous demande d'écrire un foncteur qui permet de trier ("less") des instruments donnés par adresse suivant leur nom et si le nom est identique, suivant leur identifiant. [Foncteur1] [Foncteur2]</li>
+	<li>Un musicien peut également lister les instruments qu'il a appris (dans l'ordre fixé ci-dessus). [Musicien3]</li>
+	<li>Il le fait même très naturellement [Musicien4]</li>
+</ul>
+
+<p>Il n'y a pas de fuite mémoire à votre programme !</p>
+
+<h2>Commandes GIT</h2>
+
+<p>Préparation du compte (1 fois, au début) :</p>
+
+<blockquote><code>
+git config --global user.name "un_nom"
+git config --global user.email "un_mail"
+</code></blockquote>
+
+<p>Préparation du répertoire :</p>
+<blockquote><code>
+git init
+</code></blockquote>
+
+<p>&Agrave; chaque nouveau fichier:</p>
+<blockquote><code>
+git add fichier
+git add *
+</code></blockquote>
+
+<p>Sauvegarder / Committer :</p>
+<blockquote><code>
+git commit -am "commentaire"
+</code></blockquote>
+
+<p><code>git log</code> permet d'avoir la liste des sauvegardes avec un numéro de hachage</p>
+
+<p>Pour revenir en arrière : </p>
+<blockquote><code>
+git checkout numero_de_hash <br>
+OU git revert numero_de_hash
+</code></blockquote>
+</body>
+</html>
