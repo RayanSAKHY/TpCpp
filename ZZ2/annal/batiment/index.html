@@ -1,0 +1,150 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Examen CPP ZZ2 - 20240130</title>
+	<style>
+        body {
+        	padding-top:3em;
+        	width:90%;
+        	margin: auto;
+        }
+
+		p, h1, h2, li {
+		 font-family: "Arial";
+		 text-align : justify;
+		}
+		h2 {
+		border-bottom: .2em dotted #B0CBF4;
+}
+       .imp{
+       	   width:80%;
+     margin:0.5em auto 0.5em auto;
+     padding:0.5em 1em 0.5em 4em;    
+     border-radius:0.5em;
+     box-shadow:  0 0.5em 1em 0.2em rgba(0,0,0,0.56);
+     color : white;
+     background-color: purple
+       }
+
+       code {
+       	background-color: #f5f2f0;
+ 		border-radius:0.2em;
+       	display: inline-block;
+       	padding-left:0.25em;
+       	padding-right:0.25em;
+       	font-size:120%;
+       }
+	</style>
+</head>
+<body>
+<h1>Examen de C++ - ZZ2 - 30/01/2024</h1>
+
+
+<h2>Consignes générales</h2>
+
+<p>Voici votre examen de C++ ZZ2. Lisez tout le sujet avant de commencer : un certain nombre de tests ont été écrits pour être indépendants ou avec peu d'influence sur les autres.</p>
+
+<p class="imp">&Agrave; la fin de l'examen, vous devez laisser un programme qui compile.</p>
+
+<p>Pour plus de simplicité, vous DEVEZ utiliser trois fichiers en plus de <code>main.cpp</code> : <code>tests.cpp</code>, <code>batiment.hpp</code> et <code>batiment.cpp</code>. Ne changez pas la casse et n'ajoutez pas de fichiers, cela casserait la chaine de compilation et engendrerait une note nulle.</p>
+
+<p>Toutes les déclarations seront dans l'entête, les définitions/implémentations seront dans le cpp. </p>
+
+<p>La ligne de compilation est la suivante :</p>
+<blockquote>
+<code>make</code>
+</blockquote>
+</p>
+
+<p>Si besoin, vous pouvez faire un <code>make clean</code>. La première compilation de la bibliothèque Catch est un peu longue, comme d'habitude</p>
+
+<p>Ne jamais recommenter un test qui a réussi. Tous les tests décommentés doivent compiler dans le même temps (sauf mention contraire).</p>
+
+<p>Pour garder une trace exécutable de votre programme sans stress supplémentaire :</p>
+<ul>
+<li>Vous pouvez utiliser GIT. Un rappel des commandes GIT est fait à la fin de l'énoncé. La correction s'interessera uniquement à la version disponible.</li>
+<li>Si vous préférez faire des copies de répertoires, tous les sous-répertoires de votre $HOME sont analysés et seul le code menant à une meilleure note que les autres est gardé.</li>
+</ul>
+
+<p style="text-align:center;font-size:2em"><a href="https://en.cppreference.com/w/" target="_blank">DOCUMENTATION CPP</a></p>
+
+<h2>Sujet</h2>
+
+<p>Vous allez plus ou moins implémenter les diagrammes UML ci-dessous. Toute ressemblance avec un autre examen serait purement fortuite.</p>
+
+<img src="batiment1.svg" style="display:inline-block;max-width:80%;margin-left:20%">
+
+<ul>
+	<li>Créer une classe <code>Adresse</code> qui permet de représenter une adresse avec un <code>nom</code>, une <code>latitude</code> et une <code>longitude</code>. Les  valeurs par défaut donne l'adresse de l'ISIMA [Adresse1]. </li>
+	<li>Ajouter un autre constructeur [Adresse2]. </li>
+	<li>Implémenter la fonction <code>toStream()</code> qui permet d'envoyer un affichage lisible sur le flux donné en paramètre. On pourra prendre <code>std::cout</code> par défaut. Vous avez vu en TP que pour que l'affichage des nombres réels soient corrects, il faut envoyer <code>std::fixed</code> sur le flux, puis la commande <code>std::setprecision(n)</code> où n est le nombre de chiffres après la virgule souhaités.</code>[Adresse3]</li> 
+</ul>
+
+<p>On s'intéresse ensuite à la classe <code>Ouvrier</code> dont chaque instance est identifiée de manière <b>unique</b> par l'attribut <code>id</code></p>
+<ul>
+	<li>La classe dispose d'un compteur [Ouvrier0] qui est incrémenté à chaque instanciation de la classe [Ouvrier3]</li> 
+    <li>Chaque ouvrier peut travailler et l'affiche dans un flux donné [Ouvrier1]</li> 
+	<li>On peut changer l'adresse où travaille l'ouvrier [Ouvrier2]</li> 
+	<li>On peut "copier" un ouvrier mais l'identifiant reste unique [Ouvrier4]</li>
+	<li>Si l'ouvrier n'est pas disponible, <code>travailler()</code> lève une exception <code>IndisponibleException</code> [Indisponible1]</li>
+</ul>
+<p>On s'intéresse ensuite à un ouvrier spécialisé à savoir un <code>Chef</code></p>
+<ul>
+    <li>Créer la classe <code>Chef</code> qui gère une <code>equipe</code>[Chef1]</li>
+	<li>Les ouvriers qui travaillent avec le chef, travaillent au même endroit que lui [Chef2]</li>
+	<li>Si le chef n'est pas disponible, <code>travailler()</code> lève une exception <code>IndisponibleException</code> [Indisponible2]</li>
+	<li>Quand le chef travaille, on sait avec qui il travaille [Chef3]</li>
+	<li>Quand le chef travaille, on sait avec qui il travaille enfin si les ouvriers sont disponibles [Chef4]</li>
+	<li>Pour que cela soit plus rapide à écrire, on peut utiliser un operateur de redirection [Chef5]</li>
+	<li>On voudrait également une équipe triée sur l'ordre croissant des identifiants. Pour cela, on a besoin d'un comparateur sur des ouvriers connus par adresse. [Tri]</li>
+	<li>Ce qui permet d'avoir l'affichage qui va bien [Chef6]</li>
+</ul>
+
+
+<p>Chaque ouvrier possède une ou plusieurs spécialités comme le montre le diagramme ci-dessous :</p>
+
+<img src="batiment2.svg" style="display:inline-block;max-width:80%;margin-left:20%">
+
+
+<ul>
+	<li><code>Specialite</code> est une interface au sens C++ [Specialite1]</li>
+	<li><code>Plomberie</code>, <code>Chauffage</code> et <code>Electricite</code> sont des classes [Specialite2]</li>
+	<li><code>PlomberieChauffage</code> aussi [Specialite3]</li>
+</ul>
+
+<p>Il n'y a pas de fuite mémoire à votre programme !</p>
+
+<h2>Commandes GIT</h2>
+
+<p>Préparation du compte (1 fois, au début) :</p>
+
+<blockquote><code>
+git config --global user.name "un_nom"
+git config --global user.email "un_mail"
+</code></blockquote>
+
+<p>Préparation du répertoire :</p>
+<blockquote><code>
+git init
+</code></blockquote>
+
+<p>&Agrave; chaque nouveau fichier:</p>
+<blockquote><code>
+git add fichier
+git add *
+</code></blockquote>
+
+<p>Sauvegarder / Committer :</p>
+<blockquote><code>
+git commit -am "commentaire"
+</code></blockquote>
+
+<p><code>git log</code> permet d'avoir la liste des sauvegardes avec un numéro de hachage</p>
+
+<p>Pour revenir en arrière : </p>
+<blockquote><code>
+git checkout numero_de_hash <br>
+OU git revert numero_de_hash
+</code></blockquote>
+
+
